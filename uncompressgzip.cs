@@ -13,7 +13,7 @@ public class Program
 
   public static byte[] Unzip(String input)
   {
-	  input = input + new String('=',4-input.Length%4);
+	  input = input + new String('=',input.Length%4 == 0 ? 0 : 4-input.Length%4);
       using (var msi = new MemoryStream(Convert.FromBase64String(input)))
       using (var mso = new MemoryStream())
       {
